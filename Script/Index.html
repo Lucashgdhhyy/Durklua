@@ -1,0 +1,68 @@
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local Window = Fluent:CreateWindow({
+    Title = "PGN_Durk.lua|Beta",
+    SubTitle = "V2 by dog.lua",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 460),
+    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
+    Theme = "Light",
+    MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
+})
+
+local Tab = {
+    LB = Window:AddTab({ Title = "Lucky Block", Icon = "box" })
+}
+
+Tab.LB:AddButton({
+    Title = "Lucky Block",
+    Description = "get common lucky block",
+    Callback = function()   game:GetService("ReplicatedStorage"):WaitForChild("SpawnLuckyBlock"):FireServer()
+    end
+})
+
+Tab.LB:AddButton({
+    Title = "Super Lucky Block",
+    Description = "get super lucky block",
+    Callback = function()   game:GetService("ReplicatedStorage"):WaitForChild("SpawnSuperBlock"):FireServer()
+    end
+})
+
+Tab.LB:AddButton({
+    Title = "Diamond Lucky Block",
+    Description = "get diamond lucky block",
+    Callback = function()   game:GetService("ReplicatedStorage"):WaitForChild("SpawnDiamondBlock"):FireServer()
+    end
+})
+
+
+Tab.LB:AddButton({
+    Title = "Rainbow Lucky Block",
+    Description = "get super rainbow block",
+    Callback = function()   game:GetService("ReplicatedStorage"):WaitForChild("SpawnRainbowBlock"):FireServer()
+    end
+})
+
+
+Tab.LB:AddButton({
+    Title = "Galaxy Lucky Block",
+    Description = "get galaxy lucky block",
+    Callback = function()   game:GetService("ReplicatedStorage"):WaitForChild("SpawnGalaxyBlock"):FireServer()
+    end
+})
+
+
+Tab.LB:AddButton({
+    Title = "Void Lucky Block",
+    Description = "get super lucky block",
+    Callback = function()   game:GetService("ReplicatedStorage"):WaitForChild("SpawnRainbowBlock"):FireServer()
+game:GetService("ReplicatedStorage"):WaitForChild("SpawnGalaxyBlock"):FireServer()
+game:GetService("ReplicatedStorage"):WaitForChild("SpawnRainbowBlock"):FireServer()
+game:GetService("ReplicatedStorage"):WaitForChild("SpawnGalaxyBlock"):FireServer()
+game:GetService("ReplicatedStorage"):WaitForChild("SpawnRainbowBlock"):FireServer()
+game:GetService("ReplicatedStorage"):WaitForChild("SpawnGalaxyBlock"):FireServer()
+game:GetService("ReplicatedStorage"):WaitForChild("SpawnRainbowBlock"):FireServer()
+game:GetService("ReplicatedStorage"):WaitForChild("SpawnGalaxyBlock"):FireServer()
+game:GetService("ReplicatedStorage"):WaitForChild("SpawnRainbowBlock"):FireServer()
+game:GetService("ReplicatedStorage"):WaitForChild("SpawnGalaxyBlock"):FireServer()
+    end
+})
