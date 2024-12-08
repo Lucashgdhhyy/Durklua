@@ -50,6 +50,15 @@ local Button = AimbotTab:CreateButton({
    end,
 })
 
+local Label = AimbotTab:CreateLabel("Others Aimbot", "users")
+
+local Button = AimbotTab:CreateButton({
+    Name = "Redz Hub",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"))()
+    end,
+ })
+
 local Label = PlayerTab:CreateLabel("Slider", "sliders-horizontal")
 
 -- Define o Slider para ajustar a velocidade
