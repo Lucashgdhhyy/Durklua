@@ -11,9 +11,9 @@ iRay  | Programming
 
 
 local InterfaceBuild = 'K7GD'
-local Release = "Build 1"
-local RayfieldFolder = "Durkfield"
-local ConfigurationFolder = DurkfieldFolder.."/Configurations"
+local Release = "Build 1.54"
+local RayfieldFolder = "Rayfield"
+local ConfigurationFolder = RayfieldFolder.."/Configurations"
 local ConfigurationExtension = ".rfld"
 
 
@@ -925,7 +925,7 @@ local function Hide(notify: boolean?)
 	Debounce = true
 	if notify then
 		if useMobilePrompt then 
-			RayfieldLibrary:Notify({Title = "Interface Hidden", Content = "The interface has been hidden, you can unhide the interface by tapping 'Show Rayfield'.", Duration = 7, Image = 4400697855})
+			RayfieldLibrary:Notify({Title = "Interface Hidden", Content = "The interface has been hidden, you can unhide the interface by tapping 'Show RayField'.", Duration = 7, Image = 4400697855})
 		else
 			RayfieldLibrary:Notify({Title = "Interface Hidden", Content = "The interface has been hidden, you can unhide the interface by tapping Right Shift.", Duration = 7, Image = 4400697855})
 		end
@@ -1271,6 +1271,16 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Topbar.Visible = false
 	Elements.Visible = false
 	LoadingFrame.Visible = true
+
+	if not Settings.DisableRayfieldPrompts then
+		task.spawn(function()
+			while true do
+				task.wait(math.random(180, 600))
+				-- Notificação removida
+			end
+		end)
+	end
+	
 
 	pcall(function()
 		if not Settings.ConfigurationSaving.FileName then
