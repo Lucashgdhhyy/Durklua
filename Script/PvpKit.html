@@ -1,0 +1,177 @@
+local Rayfield = loadstring(game:HttpGet('https://lucashgdhhyy.github.io/Durklua/Script/Orion/Ui.html'))()
+local Window = Rayfield:CreateWindow({
+   Name = "Dog Lol|Blox Fruit PvP Kit",
+   Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+   LoadingTitle = "PvP Kit",
+   LoadingSubtitle = "by dog lol",
+   Theme = "Amethyst", -- Check https://docs.sirius.menu/rayfield/configuration/themes
+
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = true, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
+
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "Config"
+   },
+
+   Discord = {
+      Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+
+   KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Durk|Blox Fruit PvP Kit",
+      Subtitle = "Key System",
+      Note = "Get key!", -- Use this to tell the user how to get a key
+      FileName = "DurkPvPKit", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"Test"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+
+local PlayerTab = Window:CreateTab("Player", "person-standing")
+
+local PVPTab = Window:CreateTab("PvP", "badge-alert")
+
+local Button = PVPTab:CreateButton({
+   Name = "HitBox",
+   Callback = function()
+      --[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+-- leave a like pls
+
+
+_G.HeadSize = 35
+_G.Disabled = true
+ 
+game:GetService('RunService').RenderStepped:connect(function()
+if _G.Disabled then
+for i,v in next, game:GetService('Players'):GetPlayers() do
+if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+pcall(function()
+v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+v.Character.HumanoidRootPart.Transparency = 0.7
+v.Character.HumanoidRootPart.BrickColor = BrickColor.new("White")
+v.Character.HumanoidRootPart.Material = "Plastic"
+v.Character.HumanoidRootPart.CanCollide = false
+end)
+end
+end
+end
+end)
+   end,
+})
+
+local Button = PVPTab:CreateButton({
+   Name = "Fly",
+   Callback = function()       loadstring("\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\116\116\112\71\101\116\40\40\39\104\116\116\112\115\58\47\47\103\105\115\116\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\109\101\111\122\111\110\101\89\84\47\98\102\48\51\55\100\102\102\57\102\48\97\55\48\48\49\55\51\48\52\100\100\100\54\55\102\100\99\100\51\55\48\47\114\97\119\47\101\49\52\101\55\52\102\52\50\53\98\48\54\48\100\102\53\50\51\51\52\51\99\102\51\48\98\55\56\55\48\55\52\101\98\51\99\53\100\50\47\97\114\99\101\117\115\37\50\53\50\48\120\37\50\53\50\48\102\108\121\37\50\53\50\48\50\37\50\53\50\48\111\98\102\108\117\99\97\116\111\114\39\41\44\116\114\117\101\41\41\40\41\10\10")()
+   end,
+})
+
+local Label = PlayerTab:CreateLabel("Slider", "sliders-horizontal")
+
+-- Define o Slider para ajustar a velocidade
+local Slider = PlayerTab:CreateSlider({
+   Name = "WalkSpeed",
+   Range = {1, 10},
+   Increment = 1,
+   Suffix = "Speed",
+   CurrentValue = 1,
+   Flag = "Slider1", -- A flag é o identificador para o arquivo de configuração
+   Callback = function(Value)
+       -- Ajusta o multiplicador de velocidade quando o slider é alterado
+       game.Players.LocalPlayer.Character:SetAttribute("SpeedMultiplier", Value)
+   end,
+})
+
+-- Loop para manter o valor da velocidade atualizado
+spawn(function()
+   while wait(2) do
+       -- Reaplica o valor atual do Slider no atributo "SpeedMultiplier"
+       local currentValue = Slider:Get()
+       game.Players.LocalPlayer.Character:SetAttribute("SpeedMultiplier", currentValue)
+   end
+end)
+
+-- Define o Slider para ajustar o comprimento do Dash
+local DashSlider = PlayerTab:CreateSlider({
+   Name = "Dash length",
+   Range = {10, 1000},
+   Increment = 1,
+   Suffix = "Length",
+   CurrentValue = 10,
+   Flag = "Slider2", -- A flag é o identificador para o arquivo de configuração
+   Callback = function(Value)
+       -- Ajusta o comprimento do Dash quando o slider é alterado
+       game.Players.LocalPlayer.Character:SetAttribute("DashLength", Value)
+   end,
+})
+
+-- Loop para manter o valor do Dash atualizado
+spawn(function()
+   while wait(2) do
+       -- Reaplica o valor atual do DashSlider no atributo "DashLength"
+       local currentValue = DashSlider:Get()
+       game.Players.LocalPlayer.Character:SetAttribute("DashLength", currentValue)
+   end
+end)
+local Label = PlayerTab:CreateLabel("TextBox", "text")
+
+-- Define o Input para ajustar a velocidade
+local SpeedInput = PlayerTab:CreateInput({
+   Name = "WalkSpeed",
+   CurrentValue = "1",
+   PlaceholderText = "Enter Speed",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input1",
+   Callback = function(Text)
+       local Value = tonumber(Text)
+       if Value then
+           -- Ajusta o multiplicador de velocidade quando o input é alterado
+           game.Players.LocalPlayer.Character:SetAttribute("SpeedMultiplier", Value)
+       end
+   end,
+})
+
+-- Loop para manter o valor da velocidade atualizado
+spawn(function()
+   while wait(2) do
+       -- Reaplica o valor atual do Input no atributo "SpeedMultiplier"
+       local currentValue = tonumber(SpeedInput:Get())
+       if currentValue then
+           game.Players.LocalPlayer.Character:SetAttribute("SpeedMultiplier", currentValue)
+       end
+   end
+end)
+
+-- Define o Input para ajustar o comprimento do Dash
+local DashInput = PlayerTab:CreateInput({
+   Name = "Dash length",
+   CurrentValue = "10",
+   PlaceholderText = "Enter Dash Length",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input2",
+   Callback = function(Text)
+       local Value = tonumber(Text)
+       if Value then
+           -- Ajusta o comprimento do Dash quando o input é alterado
+           game.Players.LocalPlayer.Character:SetAttribute("DashLength", Value)
+       end
+   end,
+})
+
+-- Loop para manter o valor do Dash atualizado
+spawn(function()
+   while wait(2) do
+       -- Reaplica o valor atual do Input no atributo "DashLength"
+       local currentValue = tonumber(DashInput:Get())
+       if currentValue then
+           game.Players.LocalPlayer.Character:SetAttribute("DashLength", currentValue)
+       end
+   end
+end)
