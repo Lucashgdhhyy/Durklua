@@ -4,6 +4,21 @@
 ```lua
 local Rayfield = loadstring(game:HttpGet('https://lucashgdhhyy.github.io/Durklua/Script/Orion/Ui.html'))()
 ```
+## Themes
+```
+Theme Name - ThemeIdentifier
+
+Default - Default
+Amber Glow - AmberGlow
+Amethyst - Amethyst
+Bloom - Bloom
+Dark Blue - DarkBlue
+Green - Green
+Light - Light
+Ocean - Ocean
+Serenity - Serenity
+```
+
 ## Creating a Window
 ```lua
 local Window = Rayfield:CreateWindow({
@@ -62,6 +77,11 @@ Update
 Section:Set("Section Example")
 ```
 
+## Dividers
+```lua
+local Divider = Tab:CreateDivider()
+```
+
 ## Destroyer Ui
 ```lua
 Rayfield:Destroy()
@@ -96,6 +116,20 @@ local Button = Tab:CreateButton({
    end,
 })
 ```
+## Color Pick
+```lua
+local ColorPicker = Tab:CreateColorPicker({
+    Name = "Color Picker",
+    Color = Color3.fromRGB(255,255,255),
+    Flag = "ColorPicker1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Value)
+        -- The function that takes place every time the color picker is moved/changed
+        -- The variable (Value) is a Color3fromRGB value based on which color is selected
+    end
+})
+```
+
+
 
 ## Toggle
 ```lua
@@ -121,6 +155,21 @@ local Input = Tab:CreateInput({
    Callback = function(Text)
    -- The function that takes place when the input is changed
    -- The variable (Text) is a string for the value in the text box
+   end,
+})
+```
+## Slider
+```lua
+local Slider = Tab:CreateSlider({
+   Name = "Slider Example",
+   Range = {0, 100},
+   Increment = 10,
+   Suffix = "Bananas",
+   CurrentValue = 10,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   -- The function that takes place when the slider changes
+   -- The variable (Value) is a number which correlates to the value the slider is currently at
    end,
 })
 ```
@@ -154,4 +203,18 @@ local Label = Tab:CreateLabel("Label Example", "rewind")
 ## Paragraph
 ```lua
 local Paragraph = Tab:CreateParagraph({Title = "Paragraph Example", Content = "Paragraph Example"})
+```
+
+## KeyBine
+```lua
+local Keybind = Tab:CreateKeybind({
+   Name = "Keybind Example",
+   CurrentKeybind = "Q",
+   HoldToInteract = false,
+   Flag = "Keybind1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Keybind)
+   -- The function that takes place when the keybind is pressed
+   -- The variable (Keybind) is a boolean for whether the keybind is being held or not (HoldToInteract needs to be true)
+   end,
+})
 ```
