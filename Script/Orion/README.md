@@ -9,6 +9,7 @@ local Rayfield = loadstring(game:HttpGet('https://lucashgdhhyy.github.io/Durklua
 Theme Name - ThemeIdentifier
 
 Default - Default
+Red - Red
 Amber Glow - AmberGlow
 Amethyst - Amethyst
 Bloom - Bloom
