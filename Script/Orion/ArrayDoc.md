@@ -256,3 +256,7 @@ local Keybind = Tab:CreateKeybind({
 ```lua
 local Label = Tab:CreateLabel("Label Example")
 ```
+update label
+```lua
+Label:Set("Label Example")
+```
