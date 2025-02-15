@@ -1537,14 +1537,15 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Elements.Visible = false
 	LoadingFrame.Visible = true
 
-	if not Settings.DisableRayfieldPrompts then
-		task.spawn(function()
-			while true do
-				task.wait(math.random(180, 600))
-				-- yep it's easy
-			end
-		end)
-	end
+    if not Settings.DisableRayfieldPrompts then
+        task.spawn(function()
+            while true do
+                task.wait(math.random(180, 600))
+                print("Enjoin")
+            end
+        end)
+    end
+    
 
 	pcall(function()
 		if not Settings.ConfigurationSaving.FileName then
